@@ -1,4 +1,5 @@
-with open('dataset.txt') as handle:
+#!/usr/bin/env python3
+with open('rosalind_ini4.txt') as handle:
     contents = handle.read()
     a, b = map(int, contents.split())
     if a % 2 == 1:

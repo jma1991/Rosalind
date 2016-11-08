@@ -1,6 +1,6 @@
+#!/usr/bin/env python3
 from collections import Counter
-
-with open('dataset.txt') as handle:
+with open('rosalind_ini6.txt') as handle:
     string = handle.read()
     words = string.split()
     counts = Counter(words)
