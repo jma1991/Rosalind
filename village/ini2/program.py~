@@ -1,0 +1,6 @@
+import math
+with open('dataset.txt') as handle:
+    contents = handle.read()
+    a, b = map(int, contents.split())
+    hypotenuse = math.pow(a, 2) + math.pow(b, 2)
+    print(hypotenuse)
