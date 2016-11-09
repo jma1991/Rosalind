@@ -4,28 +4,21 @@
 
 int main()
 {
-  char string[MAXLEN + 1] = NULL;
-  
-  int adenineCount = 0;
-  int cytosineCount = 0;
-  int guanineCount = 0;
-  int thymineCount = 0;
-  
-  switch (symbol)
-  {
-    case 'A':
-      adenineCount += 1;
-    case 'C':
-      cytosineCount += 1;
-    case 'G':
-      guanineCount += 1;
-    case 'T':
-      thymineCount += 1;
-  }
+  FILE *file = open_file("rosalind_dna.txt", "r");
+  char string[MAXLEN];
+  counts = count_nucleotides();
+  printf("%d %d %d %d", a_count, c_count, g_count, t_count);
+}
 
-  
+FILE* open_file(filename, mode)
+{
+  FILE* file = open("rosalind_dna.txt", "r")
+
+}
 
 
-  printf("%d %d %d %d", adenineCount, cytosineCount, guanineCount, thymineCount);
-  
+int count_nucleotides(char* string)
+{
+  int *counts = (int*) malloc(4 * sizeof(int));
+  return counts;
 }
