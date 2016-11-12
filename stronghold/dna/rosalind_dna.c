@@ -1,24 +1,69 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-#define MAXLEN 1000
+#define BUFFER 1000
 
-int main()
+FILE* open_file(char *fn);
+int* count_bases(char *dna);
+
+int main(void)
 {
-  FILE *file = open_file("rosalind_dna.txt", "r");
-  char string[MAXLEN];
-  counts = count_nucleotides();
-  printf("%d %d %d %d", a_count, c_count, g_count, t_count);
+  FILE *fp = open_file("rosalind_dna.txt");
+  char str[BUFFER + 1];
+  fgets(str, BUFFER + 1, fp);
+  int *cnts = count_bases(str);
+  printf("%i %i %i %i", cnts[0], cnts[1], cnts[2], cnts[3]);
+  free(cnts);
+  fclose(fp);
+  return 0;
 }
 
-FILE* open_file(filename, mode)
+FILE* open_file(char *fn)
 {
-  FILE* file = open("rosalind_dna.txt", "r")
+    FILE *fp = fopen(fn, "r");
 
+    if (fp == NULL)
+    {
+	perror("File open failed!");
+    }
+
+    return fp;
 }
 
-
-int count_nucleotides(char* string)
+int* count_bases(char *dna)
 {
-  int *counts = (int*) malloc(4 * sizeof(int));
-  return counts;
+    int *counts = (int *) malloc(4 * sizeof(int));
+
+    if (counts == NULL)
+    {
+	perror("Memory allocation failed!");
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+	counts[i] = 0;
+    }
+    
+    for (int i = 0; i < BUFFER; i++)
+    {
+	switch (dna[i])
+	{
+	case 'A':
+	    counts[0] += 1;
+	    break;
+	case 'C':
+	    counts[1] += 1;
+	    break;
+	case 'G':
+	    counts[2] += 1;
+	    break;
+	case 'T':
+	    counts[3] += 1;
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return counts;
 }
