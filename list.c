@@ -1,3 +1,5 @@
+#include "list.h"
+
 typedef struct node
 {
     int n;
